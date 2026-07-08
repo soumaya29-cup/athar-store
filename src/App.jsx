@@ -339,4 +339,32 @@ export default function App() {
             </div>
             <div className="p-5 border-t border-black/10">
               <div className="flex justify-between font-bold mb-4"><span>الإجمالي</span><span>{total} ريال</span></div>
-              <button disabled={cart.length === 0} onClick={() => setCheckoutOpen(true)} className="w-full bg-[#1C2B39] text-[#F6F0E4] py-3 rounded-sm font-bold disabled:opacity-40 flex items-center justify-
+      <button disabled={cart.length === 0} onClick={() => setCheckoutOpen(true)} className="w-full bg-[#1C2B39] text-[#F6F0E4] py-3 rounded-sm font-bold disabled:opacity-40 flex items-center justify-center gap-1.5">
+                إتمام الطلب <ArrowRight size={16} />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {checkoutOpen && (
+        <div className="fixed inset-0 bg-black/50 z-[120] flex items-center justify-center p-4" onClick={() => setCheckoutOpen(false)}>
+          <div className="bg-[#F6F0E4] rounded-sm p-6 w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
+            <h3 className="disp text-2xl mb-4">بيانات الطلب</h3>
+            <div className="grid gap-3 mb-4">
+              <input placeholder="الاسم الكامل" value={buyer.name} onChange={(e) => setBuyer({ ...buyer, name: e.target.value })} className="border border-black/15 rounded-sm px-3 py-2 bg-white" />
+              <input placeholder="رقم الجوال" value={buyer.phone} onChange={(e) => setBuyer({ ...buyer, phone: e.target.value })} className="border border-black/15 rounded-sm px-3 py-2 bg-white" />
+            </div>
+            <p className="text-xs opacity-50 mb-4">هذا يسجل طلبك في قاعدة بياناتك — لتفعيل دفع إلكتروني حقيقي يلزم ربط بوابة دفع لاحقًا.</p>
+            <button disabled={savingOrder} onClick={submitOrder} className="w-full bg-[#A13D2E] text-white py-3 rounded-sm font-bold disabled:opacity-50">
+              {savingOrder ? "جارٍ الإرسال..." : "تأكيد الطلب"}
+            </button>
+          </div>
+        </div>
+      )}
+
+      <Toast msg={toast} />
+    </div>
+  );
+}
+              
