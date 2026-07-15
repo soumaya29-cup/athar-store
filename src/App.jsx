@@ -8,7 +8,7 @@ const CATS = {
   concrete: { label: "الكونكريت", grad: "linear-gradient(160deg,#c9c4ba 0%,#9B9488 100%)" },
 };
 
-const ADMIN_PASS = "athar2026";
+const ADMIN_PASS = "athar2026"
 
 function Toast({ msg }) {
   if (!msg) return null;
@@ -218,7 +218,7 @@ export default function App() {
                           <h3 className="disp text-xl">{p.name}</h3>
                           <p className="text-sm opacity-70 flex-1">{p.description}</p>
                           <div className="flex items-center justify-between mt-1">
-                            <span className="font-bold">{p.price} ريال</span>
+                            <span className="font-bold">{p.price} ل.س </span>
                             <button onClick={() => addToCart(p)} className="text-xs font-bold rounded-sm px-4 py-2 transition" style={{ background: "#1C2B39", color: "#F6F0E4" }}>أضيفي للسلة</button>
                           </div>
                         </div>
@@ -267,7 +267,7 @@ export default function App() {
                           <p className="font-bold truncate">{p.name} <span className="font-normal opacity-60 text-xs">· {CATS[p.cat].label}</span></p>
                           <p className="text-xs opacity-60 truncate">{p.description}</p>
                         </div>
-                        <span className="font-bold text-sm">{p.price} ريال</span>
+                        <span className="font-bold text-sm">{p.price}ل.س </span>
                         <button onClick={() => openEdit(p)} className="p-2 hover:text-[#C9932E]"><Pencil size={16} /></button>
                         <button onClick={() => deleteProduct(p.id)} className="p-2 hover:text-[#A13D2E]"><Trash2 size={16} /></button>
                       </div>
@@ -283,9 +283,9 @@ export default function App() {
                         <span className="opacity-60">{new Date(o.created_at).toLocaleString("ar")}</span>
                       </div>
                       <ul className="text-sm opacity-80 mb-2">
-                        {(o.items || []).map((i) => <li key={i.id}>{i.name} × {i.qty} — {i.price * i.qty} ريال</li>)}
+                        {(o.items || []).map((i) => <li key={i.id}>{i.name} × {i.qty} — {i.price * i.qty} ل.س </li>)}
                       </ul>
-                      <p className="font-bold text-sm">الإجمالي: {o.total} ريال</p>
+                      <p className="font-bold text-sm">الإجمالي: {o.total} ل.س</p>
                     </div>
                   ))}
                 </div>
@@ -332,13 +332,13 @@ export default function App() {
                     <span>{i.qty}</span>
                     <button onClick={() => changeQty(i.id, 1)} className="w-6 h-6 border border-black/15 rounded-sm">+</button>
                   </div>
-                  <span className="w-16 text-left">{i.price * i.qty} ر.س</span>
+                  <span className="w-16 text-left">{i.price * i.qty} ل.س</span>
                   <button onClick={() => removeFromCart(i.id)}><Trash2 size={14} className="opacity-50 hover:opacity-100" /></button>
                 </div>
               ))}
             </div>
             <div className="p-5 border-t border-black/10">
-              <div className="flex justify-between font-bold mb-4"><span>الإجمالي</span><span>{total} ريال</span></div>
+              <div className="flex justify-between font-bold mb-4"><span>الإجمالي</span><span>{total} ل.س </span></div>
       <button disabled={cart.length === 0} onClick={() => setCheckoutOpen(true)} className="w-full bg-[#1C2B39] text-[#F6F0E4] py-3 rounded-sm font-bold disabled:opacity-40 flex items-center justify-center gap-1.5">
                 إتمام الطلب <ArrowRight size={16} />
               </button>
