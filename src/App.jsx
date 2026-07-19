@@ -6,6 +6,9 @@ const CATS = {
   carpets: { label: "لوحات السجاد الفارسي", grad: "linear-gradient(135deg,#A13D2E 0%,#7a2e22 60%,#C9932E 100%)" },
   candles: { label: "الشموع العطرية", grad: "linear-gradient(160deg,#22374a 0%,#1C2B39 100%)" },
   concrete: { label: "الكونكريت", grad: "linear-gradient(160deg,#c9c4ba 0%,#9B9488 100%)" },
+  raw: { label: "مواد أولية", grad: "linear-gradient(150deg,#8a7a63 0%,#5f5343 100%)" },
+  beauty: { label: "منتجات تجميل", grad: "linear-gradient(135deg,#d98a99 0%,#b5606f 100%)" },
+};
 };
 
 const ADMIN_PASS = "athar2026"
