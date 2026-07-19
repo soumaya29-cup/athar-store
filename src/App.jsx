@@ -309,7 +309,7 @@ export default function App() {
               <select value={form.cat} onChange={(e) => setForm({ ...form, cat: e.target.value })} className="border border-black/15 rounded-sm px-3 py-2 bg-white">
                 {Object.entries(CATS).map(([k, v]) => <option key={k} value={k}>{v.label}</option>)}
               </select>
-              <input placeholder="السعر (ريال)" type="number" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} className="border border-black/15 rounded-sm px-3 py-2 bg-white" />
+              <input placeholder="السعر (ل.س)" type="number" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} className="border border-black/15 rounded-sm px-3 py-2 bg-white" />
               <textarea placeholder="الوصف" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} className="border border-black/15 rounded-sm px-3 py-2 bg-white" rows={2} />
               <input placeholder="رابط صورة (اختياري)" value={form.img} onChange={(e) => setForm({ ...form, img: e.target.value })} className="border border-black/15 rounded-sm px-3 py-2 bg-white" />
               <button onClick={saveForm} className="bg-[#1C2B39] text-[#F6F0E4] py-2.5 rounded-sm font-bold flex items-center justify-center gap-1.5"><Check size={16}/> حفظ</button>
