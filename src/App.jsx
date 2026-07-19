@@ -9,7 +9,6 @@ const CATS = {
   raw: { label: "مواد أولية", grad: "linear-gradient(150deg,#8a7a63 0%,#5f5343 100%)" },
   beauty: { label: "منتجات تجميل", grad: "linear-gradient(135deg,#d98a99 0%,#b5606f 100%)" },
 };
-};
 
 const ADMIN_PASS = "athar2026"
 
