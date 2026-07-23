@@ -69,6 +69,7 @@ export default function App() {
   const [form, setForm] = useState({ name: "", cat: "carpets", price: "", description: "", img: "" });
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [buyer, setBuyer] = useState({ name: "", phone: "" });
+  const [uploading, setUploading] = useState(false);
   const [savingOrder, setSavingOrder] = useState(false);
 
   const showToast = (m) => { setToast(m); setTimeout(() => setToast(""), 2600); };
@@ -311,7 +312,22 @@ export default function App() {
               </select>
               <input placeholder="السعر (ل.س)" type="number" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} className="border border-black/15 rounded-sm px-3 py-2 bg-white" />
               <textarea placeholder="الوصف" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} className="border border-black/15 rounded-sm px-3 py-2 bg-white" rows={2} />
-              <input placeholder="رابط صورة (اختياري)" value={form.img} onChange={(e) => setForm({ ...form, img: e.target.value })} className="border border-black/15 rounded-sm px-3 py-2 bg-white" />
+              <div className="grid gap-2">
+  <label className="text-sm">صورة المنتج</label>
+  {form.img && <img src={form.img} alt="" className="w-24 h-24 object-cover rounded-sm" />}
+  <input type="file" accept="image/*" onChange={async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    setUploading(true);
+    const fileName = `${Date.now()}-${file.name}`;
+    const { error } = await supabase.storage.from('product-images').upload(fileName, file);
+    if (error) { showToast('فشل رفع الصورة'); setUploading(false); return; }
+    const { data } = supabase.storage.from('product-images').getPublicUrl(fileName);
+    setForm((f) => ({ ...f, img: data.publicUrl }));
+    setUploading(false);
+  }} className="border border-black/15 rounded-sm px-3 py-2 bg-white" />
+  {uploading && <p className="text-xs opacity-60">جارٍ رفع الصورة...</p>}
+</div>
               <button onClick={saveForm} className="bg-[#1C2B39] text-[#F6F0E4] py-2.5 rounded-sm font-bold flex items-center justify-center gap-1.5"><Check size={16}/> حفظ</button>
             </div>
           </div>
